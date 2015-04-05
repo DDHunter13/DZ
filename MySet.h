@@ -29,7 +29,7 @@ public:
 		return size1 + 1;
 	}
 
-	// содержится ли элемент    
+	// содержится ли элемент; трудоемкость О(N);
 	virtual bool contains(const T& elem) const {
 		for (int i = 0; i < size1 + 1; ++i) {
 			if (data[i] == elem) { return true; }
@@ -37,7 +37,7 @@ public:
 		return false;
 	}
 
-	// удалить элемент    
+	// удалить элемент; трудоемкость O(N);
 	virtual void remove(const T& elem) {	
 		for (int i = 0; i < size1 + 1; ++i) {
 			if (data[i] == elem) {
@@ -49,7 +49,7 @@ public:
 		}
 	}
 
-	// добавить элемент    
+	// добавить элемент; трудоемкость O(1) (без учета увеличния максимального размера);
 	virtual void add(const T& elem) {
 		data[size1++] = elem;
 		//увеличение размера массива по мере заполнения
