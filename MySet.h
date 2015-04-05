@@ -41,7 +41,7 @@ public:
 	virtual void remove(const T& elem) {	
 		for (int i = 0; i < size1 + 1; ++i) {
 			if (data[i] == elem) {
-				for (int j = i + 1; j < sizq1; ++j) {
+				for (int j = i + 1; j < size1; ++j) {
 					data[j - 1] = data[j];
 				}
 				size1--;
