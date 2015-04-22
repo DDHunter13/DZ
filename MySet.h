@@ -19,6 +19,27 @@ public:
 		data = new T[capacity];
 	}
 
+	//Конструктор копирования
+	MySet(const MySet &copy){
+		size1 = copy.size1;
+		capacity = copy.capacity;
+		data = new T[capacity];
+		for (int i = 0; i < size1; ++i){
+			data[i] = copy.data[i];
+		}
+	}
+
+	// Оператор присваивания
+	MySet& operator = (const MySet& copy){
+		size1 = copy.size1;
+		capacity = copy.capacity;
+		data = new T[capacity];
+		for (int i = 0; i < size1; ++i){
+			data[i] = copy.data[i];
+		}
+		return *this;
+	}
+
 	//Деструктор
 	~MySet(){
 		delete[] data;
@@ -29,7 +50,7 @@ public:
 		return size1;
 	}
 
-	// содержится ли элемент; трудоемкость O(N);
+	// содержится ли элемент    
 	virtual bool contains(const T& elem) const {
 		for (int i = 0; i < size1; ++i) {
 			if (data[i] == elem) { return true; }
@@ -37,7 +58,7 @@ public:
 		return false;
 	}
 
-	// удалить элемент; трудоемкость О(N);
+	// удалить элемент    
 	virtual void remove(const T& elem) {	
 		for (int i = 0; i < size1; ++i) {
 			if (data[i] == elem) {
@@ -49,10 +70,10 @@ public:
 		}
 	}
 
-	// добавить элемент; трудоемкость О(1) ( Без учета увеличения массива)  
+	// добавить элемент    
 	virtual void add(const T& elem) {
 		data[size1++] = elem;
-		//увеличение размера массива по мере заполнения 
+		//увеличение размера массива по мере заполнения
 		if (size1 == capacity) {
 			capacity = capacity * 2;
 			T* data1 = new T[capacity];
